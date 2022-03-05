@@ -235,6 +235,7 @@ $("#btn4").click(function () {
         });
     ResEvent();
 });
+
 $("#btn5").click(function () {
     window.contract.methods.reserveRoom(t.getHours() + ":" + t.getMinutes(), $("#btn5").val())
         .send({ from: currentAccount, value: 50000000000000 }, function (error, result) {
@@ -244,6 +245,7 @@ $("#btn5").click(function () {
         });
     ResEvent();
 });
+
 $("#btn6").click(function () {
     window.contract.methods.reserveRoom(t.getHours() + ":" + t.getMinutes(), $("#btn6").val())
         .send({ from: currentAccount, value: 50000000000000 }, function (error, result) {
@@ -253,34 +255,4 @@ $("#btn6").click(function () {
         });
     ResEvent();
 });
-$("#btnCheck").click(function () {
-    var close = document.getElementsByClassName("document");
-    var i;
-    let html = ""
-    for (i = 0; i < close.length; i++) {
-        window.contract.methods.checkName(close[i].value).call(function (error, result) {
-            if (!error && result.status) {
-                if (result.room == "DELUXE1") {
-                    $("#reslut1").html("<th class=\"Classth\">" + result.time + "<th class=\"Classth\">" + result.room + "</th>" + "<th class=\"Classth\">" + result.owner + "</th>")
-                }
-                if (result.room == "DELUXE2") {
-                    $("#reslut2").html("<th class=\"Classth\">" + result.time + "<th class=\"Classth\">" + result.room + "</th>" + "<th class=\"Classth\">" + result.owner + "</th>")
-                }
-                if (result.room == "EXECUTIVE DELUXE1") {
-                    $("#reslut3").html("<th class=\"Classth\">" + result.time + "<th class=\"Classth\">" + result.room + "</th>" + "<th class=\"Classth\">" + result.owner + "</th>")
-                }
-                if (result.room == "EXECUTIVE DELUXE2") {
-                    $("#reslut4").html("<th class=\"Classth\">" + result.time + "<th class=\"Classth\">" + result.room + "</th>" + "<th class=\"Classth\">" + result.owner + "</th>")
-                }
-                if (result.room == "NOMAL1") {
-                    $("#reslut5").html("<th class=\"Classth\">" + result.time + "<th class=\"Classth\">" + result.room + "</th>" + "<th class=\"Classth\">" + result.owner + "</th>")
-                }
-                if (result.room == "NOMAL2") {
-                    $("#reslut6").html("<th class=\"Classth\">" + result.time + "<th class=\"Classth\">" + result.room + "</th>" + "<th class=\"Classth\">" + result.owner + "</th>")
-                }
-            } else
-                console.error(error);
-        });
-    }
-});
-load();
+
