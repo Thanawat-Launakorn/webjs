@@ -170,10 +170,12 @@ section {
 
 table #Time {
     width: 20%;
+  
 }
 
 td {
     text-align: center;
+    
 }
 
 button {
@@ -220,3 +222,8 @@ button:hover img {
     transform: translateY(-15px);
     transition: all .5s ease-in-out;
 }
+
+.datetime {
+    display: none;
+}
+

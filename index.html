@@ -7,12 +7,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+
     <title>Booking Hotel</title>
 
 
 </head>
 
-<body>
+<body onload="initClock()">
+    <div class="datetime">
+        <div class="date">
+            <span id="dayname">Day</span>,
+            <span id="month">Month</span>
+            <span id="daynum">00</span>,
+            <span id="year">Year</span>
+        </div>
+        <div class="time">
+            <span id="hour">00</span>:
+            <span id="minutes">00</span>:
+            <span id="seconds">00</span>
+            <span id="period">AM</span>
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+        function updateClock() {
+            var now = new Date();
+            var dname = now.getDay(),
+                mo = now.getMonth(),
+                dnum = now.getDate(),
+                yr = now.getFullYear(),
+                hou = now.getHours(),
+                min = now.getMinutes(),
+                sec = now.getSeconds(),
+                pe = "AM";
+
+            if (hou >= 12) {
+                pe = "PM";
+            }
+            if (hou == 0) {
+                hou = 12;
+            }
+            if (hou > 12) {
+                hou = hou - 12;
+            }
+
+            Number.prototype.pad = function (digits) {
+                for (var n = this.toString(); n.length < digits; n = 0 + n);
+                return n;
+            }
+
+            var months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December"];
+            var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+            var values = [week[dname], months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+            for (var i = 0; i < ids.length; i++)
+                document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+            var timenow = hour.textContent + ":" + minutes.textContent + " " + period.textContent
+
+            $("#timenow").html(timenow);
+        }
+
+        function initClock() {
+            updateClock();
+            window.setInterval("updateClock()", 1);
+        }
+    </script>
     <div class="container">
         <div id="alert"></div>
         <div id="alertsuccess"></div>
@@ -21,14 +85,14 @@
             <a href="#profile" id="a1">Profile</a>
             <a href="#home" id="a2">Booking</a>
             <a href="#table" id="a3">Result</a>
-
+            <span id="timenow" style="margin-left: 2rem; font-size: 24px;"></span>
             <h3>Bang Saen Ville</h3>
         </div>
 
 
         <section class="section-1" id="profile">
             <figure>
-                <img src="image/sut.png" alt="..." width=150 height=150 >
+                <img src="image/sut.png" alt="..." width=150 height=150>
                 <h2>Assignment 2</h2>
                 <h2>Introduction to blockchain technology</h2>
                 <h2>523355</h2>
@@ -58,7 +122,7 @@
                         UJ apartment ตั้งอยู่ในเขตบางแสน ห่างจากพัทยากลาง 39 กิโลเมตร
                         และห่างจากหาดจอมเทียนอยู่ห่างจากที่พักเป็นระยะทาง 44 กิโลเมตร มีอินเทอร์เน็ตไร้สาย (WiFi) ฟรี
                         <br><br>
-                        Reserve: 0.1 Ether
+                        Reserve: 0.01 Ether
                     </div>
                 </button>
             </div>
@@ -72,7 +136,7 @@
                         และลานระเบียง ที่พักหันหน้าเข้าหาชายหาด รีสอร์ทระดับ 4 ดาวนี้มีบริการอินเทอร์เน็ตไร้สาย (WiFi)
                         ฟรี
                         <br><br>
-                        Reserve: 0.2 Ether
+                        Reserve: 0.025 Ether
                     </div>
                 </button>
             </div>
@@ -84,7 +148,7 @@
                     <div>BBG Seaside Luxurious Service Apartment ตั้งอยู่ในบางแสน ให้บริการศูนย์ออกกำลังกาย
                         บริการอินเทอร์เน็ตไร้สาย (Wi-Fi) ฟรีทั่วพื้นที่ส่วนกลาง
                         <br><br>
-                        Reserve: 0.3 Ether
+                        Reserve: 0.02 Ether
                     </div>
                 </button>
             </div>
@@ -97,7 +161,7 @@
                         Symphony of The Sea หันหน้าออกไปทางริมชายหาด ให้บริการที่พักระดับ 4 ดาวในบางแสน และมีห้องอาหาร
                         บาร์ และสวนหย่อม ที่พักนี้มีห้องสำหรับครอบครัว
                         <br><br>
-                        Reserve: 0.4 Ether
+                        Reserve: 0.03 Ether
                     </div>
                 </button>
             </div>
@@ -110,7 +174,7 @@
                         Sea Sand Trees ตั้งอยู่ริมชายหาดในบางแสน มีลานระเบียง ที่พักนี้มีสิ่งอำนวยความสะดวกต่าง ๆ เช่น
                         รูมเซอร์วิส และบริการพื้นที่รับฝากสัมภาระ ตลอดจนมีบริการอินเทอร์เน็ตไร้สาย (WiFi)
                         <br><br>
-                        Reserve: 0.5 Ether
+                        Reserve: 0.015 Ether
                     </div>
 
                 </button>
@@ -125,7 +189,7 @@
                         โดยให้บริการที่พักพร้อมอินเทอร์เน็ตไร้สาย (WiFi) ฟรี และที่จอดรถส่วนตัวฟรี ยูนิตมีระเบียง
                         เครื่องปรับอากาศ
                         <br><br>
-                        Reserve: 0.6 Ether
+                        Reserve: 0.025 Ether
                     </div>
                 </button>
             </div>
@@ -139,12 +203,36 @@
                     <th id="Room">Room</th>
                     <th id="Onwer">Onwer</th>
                 </tr>
-                <tr id="re1"></tr>
-                <tr id="re2"></tr>
-                <tr id="re3"></tr>
-                <tr id="re4"></tr>
-                <tr id="re5"></tr>
-                <tr id="re6"></tr>
+                <tr id="re1">
+                    <th id="time1"></th>
+                    <th id="hotel1"></th>
+                    <th id="owner1"></th>
+                </tr>
+                <tr id="re2">
+                    <th id="time2"></th>
+                    <th id="hotel2"></th>
+                    <th id="owner2"></th>
+                </tr>
+                <tr id="re3">
+                    <th id="time3"></th>
+                    <th id="hotel3"></th>
+                    <th id="owner3"></th>
+                </tr>
+                <tr id="re4">
+                    <th id="time4"></th>
+                    <th id="hotel4"></th>
+                    <th id="owner4"></th>
+                </tr>
+                <tr id="re5">
+                    <th id="time5"></th>
+                    <th id="hotel5"></th>
+                    <th id="owner5"></th>
+                </tr>
+                <tr id="re6">
+                    <th id="time6"></th>
+                    <th id="hotel6"></th>
+                    <th id="owner6"></th>
+                </tr>
             </table>
 
         </section>
@@ -152,7 +240,311 @@
 
     </div>
 
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+    <script>
+
+
+        // document.querySelector('#btn1').addEventListener('click', () => {
+        // console.log('test');
+        // })
+
+
+        async function loadWeb3() {
+            if (window.ethereum) {
+                window.web3 = new Web3(window.ethereum);
+                window.ethereum.enable();
+            }
+        }
+        
+        async function loadContract() {
+            return await new window.web3.eth.Contract(abi, "0x99472A78dec9158742071EF02D5D1639f7054922"); //contract
+        }
+
+
+        let currentAccount = null;
+        window.ethereum
+            .request({ method: 'eth_accounts' })
+            .then(handleAccountsChanged)
+            .catch((err) => {
+                // Some unexpected error.
+                // For backwards compatibility reasons, if no accounts are available,
+                // eth_accounts will return an empty array.
+                console.error(err);
+            });
+
+        // Note that this event is emitted on page load.
+        // If the array of accounts is non-empty, you're already
+        // connected.
+        window.ethereum.on('accountsChanged', handleAccountsChanged);
+
+        // For now, 'eth_accounts' will continue to always return an array
+        function handleAccountsChanged(accounts) {
+            if (accounts.length === 0) {
+                // MetaMask is locked or the user has not connected any accounts
+                console.log('Please connect to MetaMask.');
+            } else if (accounts[0] !== currentAccount) {
+                currentAccount = accounts[0];
+                // Do any other work!
+            }
+        }
+
+        let abi = [
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": false,
+                        "internalType": "address",
+                        "name": "from",
+                        "type": "address"
+                    },
+                    {
+                        "indexed": false,
+                        "internalType": "string",
+                        "name": "timestamp",
+                        "type": "string"
+                    },
+                    {
+                        "indexed": false,
+                        "internalType": "string",
+                        "name": "hotelname",
+                        "type": "string"
+                    },
+                    {
+                        "indexed": false,
+                        "internalType": "bytes32",
+                        "name": "hash",
+                        "type": "bytes32"
+                    }
+                ],
+                "name": "reserveAdded",
+                "type": "event"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": false,
+                        "internalType": "address",
+                        "name": "from",
+                        "type": "address"
+                    },
+                    {
+                        "indexed": false,
+                        "internalType": "string",
+                        "name": "text",
+                        "type": "string"
+                    },
+                    {
+                        "indexed": false,
+                        "internalType": "string",
+                        "name": "reason",
+                        "type": "string"
+                    }
+                ],
+                "name": "reserveError",
+                "type": "event"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "string",
+                        "name": "name",
+                        "type": "string"
+                    }
+                ],
+                "name": "checkReserve",
+                "outputs": [
+                    {
+                        "internalType": "bool",
+                        "name": "",
+                        "type": "bool"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "string",
+                        "name": "t",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "h",
+                        "type": "string"
+                    }
+                ],
+                "name": "reserve",
+                "outputs": [],
+                "stateMutability": "payable",
+                "type": "function"
+            }
+        ];
+
+
+        async function load() {
+            await loadWeb3();
+            window.contract = await loadContract();
+            // updateStatus('Ready!');
+        }
+
+        function updateStatus(status) {
+            // const statusEl = document.getElementById('status');
+            // statusEl.innerHTML = status;
+            // console.log(status);
+        }
+
+        $("#btn1").click(function () {
+            console.log(currentAccount);
+            var times = document.getElementById('timenow');
+            times.style.display = 'block';
+            var timeToString;
+            if (times.outerHTML)
+                timeToString = times.outerHTML;
+            else if (XMLSerializer)
+                timeToString = new XMLSerializer().timeToString(times);
+
+            window.contract.methods.reserve(timeToString, "UJ Apartment")
+                .send({ from: currentAccount, value: 10000000000000000 }, function (error, result) {
+
+                });
+            window.contract.once('reserveAdded', {}, function (error, event) {
+                if (!error) {
+                    console.log(event);
+                    $("#time1").html(event.returnValues.timestamp);
+                    $("#hotel1").html(event.returnValues.hotelname);
+                    $("#owner1").html(event.returnValues.from);
+                }
+            })
+        });
+
+        $("#btn2").click(function () {
+            console.log(currentAccount);
+            var times = document.getElementById('timenow');
+            times.style.display = 'block';
+            var timeToString;
+            if (times.outerHTML)
+                timeToString = times.outerHTML;
+            else if (XMLSerializer)
+                timeToString = new XMLSerializer().timeToString(times);
+            window.contract.methods.reserve(timeToString, "The Tide Resort")
+                .send({ from: currentAccount, value: 25000000000000000 }, function (error, result) {
+                    $("#result").html(result);
+                });
+            window.contract.once('reserveAdded', {}, function (error, event) {
+                if (!error) {
+                    console.log(event);
+                    $("#time2").html(event.returnValues.timestamp);
+                    $("#hotel2").html(event.returnValues.hotelname);
+                    $("#owner2").html(event.returnValues.from);
+                }
+            })
+        });
+
+        $("#btn3").click(function () {
+            console.log(currentAccount);
+            var times = document.getElementById('timenow');
+            times.style.display = 'block';
+            var timeToString;
+            if (times.outerHTML)
+                timeToString = times.outerHTML;
+            else if (XMLSerializer)
+                timeToString = new XMLSerializer().timeToString(times);
+            window.contract.methods.reserve(timeToString, "Seaside Luxurious")
+                .send({ from: currentAccount, value: 20000000000000000 }, function (error, result) {
+                    $("#result").html(result);
+                });
+            window.contract.once('reserveAdded', {}, function (error, event) {
+                if (!error) {
+                    console.log(event);
+                    $("#time3").html(event.returnValues.timestamp);
+                    $("#hotel3").html(event.returnValues.hotelname);
+                    $("#owner3").html(event.returnValues.from);
+                }
+            })
+        });
+
+        $("#btn4").click(function () {
+            console.log(currentAccount);
+            var times = document.getElementById('timenow');
+            times.style.display = 'block';
+            var timeToString;
+            if (times.outerHTML)
+                timeToString = times.outerHTML;
+            else if (XMLSerializer)
+                timeToString = new XMLSerializer().timeToString(times);
+            window.contract.methods.reserve(timeToString, "Symphony of The Sea")
+                .send({ from: currentAccount, value: 30000000000000000 }, function (error, result) {
+                    $("#result").html(result);
+                });
+            window.contract.once('reserveAdded', {}, function (error, event) {
+                if (!error) {
+                    console.log(event);
+                    $("#time4").html(event.returnValues.timestamp);
+                    $("#hotel4").html(event.returnValues.hotelname);
+                    $("#owner4").html(event.returnValues.from);
+                }
+            })
+        });
+
+        $("#btn5").click(function () {
+            console.log(currentAccount);
+            var times = document.getElementById('timenow');
+            times.style.display = 'block';
+            var timeToString;
+            if (times.outerHTML)
+                timeToString = times.outerHTML;
+            else if (XMLSerializer)
+                timeToString = new XMLSerializer().timeToString(times);
+            window.contract.methods.reserve(timeToString, "Sea Sand Tree")
+                .send({ from: currentAccount, value: 15000000000000000 }, function (error, result) {
+                    $("#result").html(result);
+                });
+            window.contract.once('reserveAdded', {}, function (error, event) {
+                if (!error) {
+                    console.log(event);
+                    $("#time5").html(event.returnValues.timestamp);
+                    $("#hotel5").html(event.returnValues.hotelname);
+                    $("#owner5").html(event.returnValues.from);
+                }
+            })
+        });
+
+        $("#btn6").click(function () {
+            console.log(currentAccount);
+            var times = document.getElementById('timenow');
+            times.style.display = 'block';
+            var timeToString;
+            if (times.outerHTML)
+                timeToString = times.outerHTML;
+            else if (XMLSerializer)
+                timeToString = new XMLSerializer().timeToString(times);
+            window.contract.methods.reserve(timeToString, "Monta Apartment")
+                .send({ from: currentAccount, value: 25000000000000000 }, function (error, result) {
+                    $("#result").html(result);
+                });
+            window.contract.once('reserveAdded', {}, function (error, event) {
+                if (!error) {
+                    console.log(event);
+                    $("#time6").html(event.returnValues.timestamp);
+                    $("#hotel6").html(event.returnValues.hotelname);
+                    $("#owner6").html(event.returnValues.from);
+                }
+            })
+        });
+
+
+
+        load();
+
+    </script>
+
 </body>
-<script src="script/script.js"></script>
+
 
 </html>
