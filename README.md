@@ -19,3 +19,6 @@ https://thanawat-launakorn.github.io/webjs/#home
 
 # Test
 Open with live server and Remix to test it!!!
+
+# Test Smartcontract
+https://rinkeby.etherscan.io/address/0x999e77a369e7b9542400ec766024902f4dccd447
