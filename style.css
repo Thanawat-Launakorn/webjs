@@ -148,11 +148,8 @@ button {
     transition: all .5s ease-in-out;
     border-radius: 1rem;
     overflow: hidden;
-    
-    
-    
-    
-  
+    cursor: pointer;
+
 }
 
 button div {
