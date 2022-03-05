@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Josefin+Sans&family=Kanit&display=swap');
+:root {
+    --Very-dark-blue: hsl(217, 54%, 11%);
+    /*(main BG)*/
+    --Very-blue: hsl(216, 50%, 16%);
+    /*(card BG)*/
+   
+}
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+
+    
+    font-family: cursive;
+}
+
+
+
+.navbar {
+    width: 100%;
+    height: 50px;
+    z-index: 10;
+  
+    background: rgb(255 255 255 / 50%);
+    
+
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+}
+
+.navbar a {
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    margin: auto 1rem;
+    background: transparent;
+    
+    color: rgb(85, 32, 136);
+    font-size: 20px;
+    font-weight: bold;
+    transition: all .3s ease-in-out;
+    transform: translateX(20px);
+}
+
+.navbar h3 {
+    transition: all .3s ease-in-out;
+    text-transform: uppercase;
+    
+    
+    position: absolute;
+    right: 4rem;
+
+    color: green;
+}
+
+.navbar a:hover {
+    color: black;
+    text-decoration: solid;
+    border-bottom: 3px solid ;
+
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section-1 figure{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    line-height: 3em;
+
+    position: absolute;
+    top: 50px;
+    
+}
+
+.section-1 .grid-display {
+    display: grid;
+    gap: 50px 100px;
+    grid-template-columns: auto auto ;
+    margin: 10rem 0 0 0 ;
+    padding: 10px;
+}
+
+.section-1 .grid-display .block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 2em;
+    font-family: 'Kanit', sans-serif;
+}
+
+.section-2 {
+    display: grid;
+    gap: 2.5% 5%;
+    grid-template-columns: auto auto auto;
+    margin: auto;
+    padding: 10px;
+}
+
+
+
+.section-2 img {
+    width: 200px;
+    height: 200px;
+}
+
+.section-2 div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+
+
+table {
+    border: 1px solid #ced4da;
+    width: 50%;
+    height: 100%;
+}
+
+th {
+   
+}
+
+table #Time {
+    width: 20%;
+}
+
+td {
+    text-align: center;
+}
+
+button {
+    margin-top: 10px;
+    border: none;
+    background: transparent;
+    position: relative;
+    transition: all .5s ease-in-out;
+    border-radius: 1rem;
+    overflow: hidden;
+    
+    
+    
+    
+  
+}
+
+button div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all .3s ease-in-out;
+    background: linear-gradient(rgba(230, 230, 230, 0.781), rgba(214, 214, 214, 0.781));
+  
+    font-family: 'Kanit', sans-serif;
+    font-size: 12px;
+   
+    opacity: 0;
+}
+
+button:hover div{
+    opacity: 1;
+}
+
+button:hover img{
+    transform: scale(1.2);
+    transition: all .5s ease-in-out;
+}
